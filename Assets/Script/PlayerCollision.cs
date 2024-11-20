@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
-    public int maxLives = 3;
+    public int maxLives = 2;
     private int currentLives;
 
     [SerializeField] private Image healthBar;

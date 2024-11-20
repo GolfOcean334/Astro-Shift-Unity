@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 29411586703919393}
   - component: {fileID: -5484955934149790356}
   - component: {fileID: 5311019945066600194}
+  - component: {fileID: 1991526823477534437}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -186,7 +187,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 2
-  lifeIcons: []
+  healthBar: {fileID: 0}
+--- !u!54 &1991526823477534437
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078686894687177579}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5064477536487143185
 GameObject:
   m_ObjectHideFlags: 0
