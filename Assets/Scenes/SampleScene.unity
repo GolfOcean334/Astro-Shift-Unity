@@ -1144,19 +1144,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5311019945066600194, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
         type: 3}
-      propertyPath: maxLives
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5311019945066600194, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
-        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 927549484}
-    - target: {fileID: 5311019945066600194, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
-        type: 3}
-      propertyPath: invulnerabilityDuration
-      value: 0.01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
