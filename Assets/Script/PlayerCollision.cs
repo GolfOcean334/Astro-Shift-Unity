@@ -6,7 +6,7 @@ public class PlayerCollision : MonoBehaviour
     public int maxLives = 3;
     private int currentLives;
 
-    public Image healthBar;
+    [SerializeField] private Image healthBar;
 
     void Start()
     {

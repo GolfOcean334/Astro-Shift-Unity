@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class AsteroidMovement : MonoBehaviour
 {
-    public float initialSpeed = 5.0f;
-    public float maxSpeed = 2000.0f;
-    public float accelerationRate = 0.5f;
-    public float destroyZ = -10.0f;
+    [SerializeField] private float initialSpeed = 5.0f;
+    [SerializeField] private float maxSpeed = 2000.0f;
+    [SerializeField] private float accelerationRate = 0.5f;
+    [SerializeField] private float destroyZ = -10.0f;
 
     private float currentSpeed;
     private static float globalSpeedMultiplier = 1.0f;

@@ -3,14 +3,14 @@ using UnityEngine.InputSystem;
 
 public class ShipController : MonoBehaviour
 {
-    public float columnSpacing = 2.0f; // Espace entre les couloirs
+    [SerializeField] private float columnSpacing = 2.0f; // Espace entre les couloirs
     private int currentLane = 2; // Position initiale (couloir 3 / couloir milieux)
 
     private bool isDodging = false;
     private float dodgeCooldownTimer = 0f;
 
-    public float dodgeDuration = 0.5f; // Durée d'invulnérabilité
-    public float dodgeCooldown = 10f; // Temps de recharge de l'esquive
+    [SerializeField] private float dodgeDuration = 0.5f; // Durée d'invulnérabilité
+    [SerializeField] private float dodgeCooldown = 10f; // Temps de recharge de l'esquive
 
     private PlayerControls controls;
 
