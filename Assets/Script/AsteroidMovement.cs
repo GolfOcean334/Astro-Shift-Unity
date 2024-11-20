@@ -10,11 +10,6 @@ public class AsteroidMovement : MonoBehaviour
     private float currentSpeed;
     private static float globalSpeedMultiplier = 1.0f;
 
-    void Start()
-    {
-        currentSpeed = initialSpeed * globalSpeedMultiplier;
-    }
-
     void Update()
     {
         if (globalSpeedMultiplier < maxSpeed / initialSpeed)

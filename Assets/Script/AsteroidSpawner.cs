@@ -4,8 +4,8 @@ public class AsteroidSpawner : MonoBehaviour
 {
     public GameObject asteroidPrefab;
     public Transform[] lanes;
-    public float minSpawnInterval = 1.0f;
-    public float maxSpawnInterval = 3.0f;
+    public float minSpawnInterval = 0.5f;
+    public float maxSpawnInterval = 1f;
     public int minAsteroidsPerWave = 2;
     public int maxAsteroidsPerWave = 4;
 

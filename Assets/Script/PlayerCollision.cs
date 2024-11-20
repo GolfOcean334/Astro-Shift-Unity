@@ -3,10 +3,12 @@ using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
-    public int maxLives = 2;
+    public int maxLives = 3;
     private int currentLives;
 
     [SerializeField] private Image healthBar;
+
+    [SerializeField] private float invulnerabilityDuration = 0.01f;
 
     void Start()
     {
@@ -33,6 +35,10 @@ public class PlayerCollision : MonoBehaviour
         {
             GameOver();
         }
+        else
+        {
+            StartCoroutine(InvulnerabilityRoutine());
+        }
     }
 
     void UpdateHealthBar()
@@ -45,5 +51,10 @@ public class PlayerCollision : MonoBehaviour
     {
         Debug.Log("Game Over!");
         Time.timeScale = 0;
+    }
+
+    System.Collections.IEnumerator InvulnerabilityRoutine()
+    {
+        yield return new WaitForSeconds(invulnerabilityDuration);
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5484955934149790356}
   - component: {fileID: 5311019945066600194}
   - component: {fileID: 1991526823477534437}
+  - component: {fileID: 91276780718009218}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -52,6 +53,9 @@ MonoBehaviour:
   columnSpacing: 2
   dodgeDuration: 0.5
   dodgeCooldown: 10
+  imgDodge: {fileID: 0}
+  dodgeUnavailableColor: {r: 1, g: 1, b: 1, a: 0.5}
+  dodgeAvailableColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &29411586703919393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,8 +190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8b648fd50add1469a630866c676465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLives: 2
+  maxLives: 3
   healthBar: {fileID: 0}
+  invulnerabilityDuration: 0.01
 --- !u!54 &1991526823477534437
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,6 +220,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &91276780718009218
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078686894687177579}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c03498f2d33d96a4989c47539e5d552b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5064477536487143185
 GameObject:
   m_ObjectHideFlags: 0
