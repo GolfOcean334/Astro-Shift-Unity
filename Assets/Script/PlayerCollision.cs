@@ -8,7 +8,8 @@ public class PlayerCollision : MonoBehaviour
 
     [SerializeField] private Image healthBar;
 
-    [SerializeField] private float invulnerabilityDuration = 0.01f;
+    bool isInvulnerable = false;
+    [SerializeField] private float invulnerabilityDuration = 0.1f;
 
     void Start()
     {
@@ -18,8 +19,9 @@ public class PlayerCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Asteroid"))
+        if (other.CompareTag("Asteroid") && isInvulnerable != true)
         {
+            Debug.Log("Collision");
             LoseLife();
             Destroy(other.gameObject);
         }
@@ -55,6 +57,8 @@ public class PlayerCollision : MonoBehaviour
 
     System.Collections.IEnumerator InvulnerabilityRoutine()
     {
+        isInvulnerable = true;
         yield return new WaitForSeconds(invulnerabilityDuration);
+        isInvulnerable = false;
     }
 }

@@ -70,7 +70,6 @@ public class ShipController : MonoBehaviour
     {
         if (!isDodging && dodgeCooldownTimer <= 0f)
         {
-            Debug.Log("Dodge");
             shipCollider.enabled = false;
             StartCoroutine(DodgeRoutine());
         }
