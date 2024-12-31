@@ -43,22 +43,14 @@ public class PlanetManager : MonoBehaviour
         GameObject prefab = planetPrefabs[Random.Range(0, planetPrefabs.Length)];
 
         Vector3 spawnPosition;
+        float spawnY = GenerateRandomY();
         if (initialSpawn)
         {
-            spawnPosition = new Vector3(
-                Random.Range(-spawnRangeX, spawnRangeX),
-                Random.Range(-spawnRangeY, spawnRangeY),
-                Random.Range(-spawnRangeZ, spawnRangeZ)
-            );
+            spawnPosition = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnY, Random.Range(-spawnRangeZ, spawnRangeZ));
         }
         else
         {
-            float spawnY = GenerateRandomY();
-            spawnPosition = new Vector3(
-                Random.Range(-spawnRangeX, spawnRangeX),
-                spawnY,
-                spawnRangeZ
-            );
+            spawnPosition = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), spawnY, spawnRangeZ);
         }
 
         GameObject newPlanet = Instantiate(prefab, spawnPosition, Quaternion.identity);
@@ -74,7 +66,7 @@ public class PlanetManager : MonoBehaviour
         float y;
         do
         {
-            y = Random.Range(-20f, 20f);
+            y = Random.Range(-spawnRangeY, spawnRangeY);
         } while (y > -4f && y < 5f);
         return y;
     }
