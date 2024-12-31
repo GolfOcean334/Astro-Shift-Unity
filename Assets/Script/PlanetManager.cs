@@ -7,7 +7,7 @@ public class PlanetManager : MonoBehaviour
     [SerializeField] private GameObject[] planetPrefabs;
     [SerializeField] private float spawnRangeX = 50f;
     [SerializeField] private float spawnRangeZ = 50f;
-    [SerializeField] private float spawnHeight = 0;
+    [SerializeField] private float spawnRangeY = 20f;
     [SerializeField] private int maxPlanets = 10;
     [SerializeField] private float minSpeed = 5f;
     [SerializeField] private float maxSpeed = 15f;
@@ -18,13 +18,12 @@ public class PlanetManager : MonoBehaviour
     {
         for (int i = 0; i < maxPlanets; i++)
         {
-            SpawnPlanet();
+            SpawnPlanet(true);
         }
     }
 
     void Update()
     {
-        // Déplacement et gestion des planètes
         for (int i = activePlanets.Count - 1; i >= 0; i--)
         {
             GameObject planet = activePlanets[i];
@@ -34,24 +33,49 @@ public class PlanetManager : MonoBehaviour
             {
                 Destroy(planet);
                 activePlanets.RemoveAt(i);
-                SpawnPlanet();
+                SpawnPlanet(false);
             }
         }
     }
 
-    void SpawnPlanet()
+    void SpawnPlanet(bool initialSpawn)
     {
         GameObject prefab = planetPrefabs[Random.Range(0, planetPrefabs.Length)];
-        Vector3 spawnPosition = new Vector3(
-            Random.Range(-spawnRangeX, spawnRangeX),
-            spawnHeight,
-            Random.Range(-spawnRangeZ, spawnRangeZ)
-        );
+
+        Vector3 spawnPosition;
+        if (initialSpawn)
+        {
+            spawnPosition = new Vector3(
+                Random.Range(-spawnRangeX, spawnRangeX),
+                Random.Range(-spawnRangeY, spawnRangeY),
+                Random.Range(-spawnRangeZ, spawnRangeZ)
+            );
+        }
+        else
+        {
+            float spawnY = GenerateRandomY();
+            spawnPosition = new Vector3(
+                Random.Range(-spawnRangeX, spawnRangeX),
+                spawnY,
+                spawnRangeZ
+            );
+        }
 
         GameObject newPlanet = Instantiate(prefab, spawnPosition, Quaternion.identity);
+
         float randomSpeed = Random.Range(minSpeed, maxSpeed);
         newPlanet.AddComponent<Planet>().speed = randomSpeed;
 
         activePlanets.Add(newPlanet);
+    }
+
+    float GenerateRandomY()
+    {
+        float y;
+        do
+        {
+            y = Random.Range(-20f, 20f);
+        } while (y > -4f && y < 5f);
+        return y;
     }
 }
