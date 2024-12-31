@@ -19,6 +19,7 @@ public class ShipController : MonoBehaviour
     [SerializeField] private Color dodgeAvailableColor = new Color(1, 1, 1, 1); // Couleur normale
 
     private PlayerControls controls;
+    [SerializeField] private LaneManager laneManager;
 
     private Animator animator;
 
@@ -32,6 +33,11 @@ public class ShipController : MonoBehaviour
         controls.Player.Dodge.performed += ctx => Dodge();
 
         animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        laneManager.HighlightLane(currentLane);
     }
 
     void OnEnable()
@@ -78,6 +84,8 @@ public class ShipController : MonoBehaviour
     void UpdatePosition()
     {
         transform.position = new Vector3(currentLane * columnSpacing, transform.position.y, transform.position.z);
+
+        laneManager.HighlightLane(currentLane);
     }
 
     System.Collections.IEnumerator DodgeRoutine()
