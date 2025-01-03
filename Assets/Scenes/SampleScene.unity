@@ -537,7 +537,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 116, y: -191}
-  m_SizeDelta: {x: 500, y: 75}
+  m_SizeDelta: {x: 400, y: 75}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &617687653
 MonoBehaviour:
@@ -561,8 +561,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Score :'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a3698738c30c2bd43acdd2c82a2a3c4f, type: 2}
-  m_sharedMaterial: {fileID: 1708160892549480582, guid: a3698738c30c2bd43acdd2c82a2a3c4f,
+  m_fontAsset: {fileID: 11400000, guid: 8aef3badf6f7e874ea5678dde3027318, type: 2}
+  m_sharedMaterial: {fileID: -3194993752640753227, guid: 8aef3badf6f7e874ea5678dde3027318,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -587,7 +587,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 54.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
