@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
@@ -51,10 +52,20 @@ public class PlayerCollision : MonoBehaviour
 
     void GameOver()
     {
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.EndGame();
+        }
         Debug.Log("Game Over!");
         Time.timeScale = 0;
+        GoMenu();
+        Cursor.lockState = CursorLockMode.None;
     }
 
+    public void GoMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
     System.Collections.IEnumerator InvulnerabilityRoutine()
     {
         isInvulnerable = true;

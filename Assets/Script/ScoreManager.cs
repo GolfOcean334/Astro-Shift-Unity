@@ -1,15 +1,15 @@
-
 using UnityEngine;
 using System.IO;
 
 public class ScoreManager : MonoBehaviour
 {
-    private const string BestScoreFileName = "bestScore.json";
+    private const string ScoreFileName = "scoreData.json";
 
     public static ScoreManager Instance { get; private set; }
 
     public float CurrentScore { get; private set; }
     public int BestScore { get; private set; }
+    public int LastScore { get; private set; }
 
     private float time;
 
@@ -23,7 +23,7 @@ public class ScoreManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        LoadBestScore();
+        LoadScores();
     }
 
     void Update()
@@ -38,45 +38,57 @@ public class ScoreManager : MonoBehaviour
         CurrentScore = time * 5;
     }
 
+    public void EndGame()
+    {
+        LastScore = Mathf.FloorToInt(CurrentScore);
+        SaveScores();
+    }
+
     private void CheckAndSaveBestScore()
     {
         if (Mathf.FloorToInt(CurrentScore) > BestScore)
         {
             BestScore = Mathf.FloorToInt(CurrentScore);
-            SaveBestScore(BestScore);
         }
     }
 
-    private void SaveBestScore(int bestScore)
+    private void SaveScores()
     {
-        BestScoreData data = new BestScoreData { BestScore = bestScore };
+        ScoreData data = new ScoreData
+        {
+            BestScore = BestScore,
+            LastScore = LastScore
+        };
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(GetFilePath(), json);
     }
 
-    private void LoadBestScore()
+    private void LoadScores()
     {
         string filePath = GetFilePath();
         if (File.Exists(filePath))
         {
             string json = File.ReadAllText(filePath);
-            BestScoreData data = JsonUtility.FromJson<BestScoreData>(json);
+            ScoreData data = JsonUtility.FromJson<ScoreData>(json);
             BestScore = data.BestScore;
+            LastScore = data.LastScore;
         }
         else
         {
             BestScore = 0;
+            LastScore = 0;
         }
     }
 
     private string GetFilePath()
     {
-        return Path.Combine(Application.persistentDataPath, BestScoreFileName);
+        return Path.Combine(Application.persistentDataPath, ScoreFileName);
     }
 
     [System.Serializable]
-    private class BestScoreData
+    private class ScoreData
     {
         public int BestScore;
+        public int LastScore;
     }
 }
