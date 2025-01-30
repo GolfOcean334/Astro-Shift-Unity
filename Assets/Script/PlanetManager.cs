@@ -67,7 +67,7 @@ public class PlanetManager : MonoBehaviour
         do
         {
             y = Random.Range(-spawnRangeY, spawnRangeY);
-        } while (y > -4f && y < 5f);
+        } while (y > -6f && y < 8f);
         return y;
     }
 }

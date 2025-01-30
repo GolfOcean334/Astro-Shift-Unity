@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening; // Importation de DoTween
 
 public class ShipController : MonoBehaviour
 {
@@ -7,12 +8,13 @@ public class ShipController : MonoBehaviour
     private int currentLane = 2; // Position initiale (couloir 3 sur 5)
 
     private bool isDodging = false;
+    private bool isAnimatingDodge = false;
     private float dodgeCooldownTimer = 0f;
 
     [SerializeField] private float dodgeDuration = 0.5f; // Durée d'invulnérabilité
     [SerializeField] private float dodgeCooldown = 10f; // Temps de recharge de l'esquive
 
-    Collider shipCollider;
+    private Collider shipCollider;
 
     [SerializeField] private Image imgDodge;
     [SerializeField] private Color dodgeUnavailableColor = new Color(1, 1, 1, 0.5f); // Couleur grisée
@@ -23,11 +25,15 @@ public class ShipController : MonoBehaviour
 
     private Animator animator;
 
+    [SerializeField] private GameObject shield;
+
     void Awake()
     {
         controls = new PlayerControls();
         shipCollider = GetComponent<Collider>();
         shipCollider.enabled = true;
+
+        shield.SetActive(false);
 
         controls.Player.Move.performed += ctx => Move(ctx.ReadValue<Vector2>());
         controls.Player.Dodge.performed += ctx => Dodge();
@@ -78,13 +84,15 @@ public class ShipController : MonoBehaviour
         {
             shipCollider.enabled = false;
             StartCoroutine(DodgeRoutine());
+
+            AnimateDodgeIconOnActivated();
         }
     }
+
 
     void UpdatePosition()
     {
         transform.position = new Vector3(currentLane * columnSpacing, transform.position.y, transform.position.z);
-
         laneManager.HighlightLane(currentLane);
     }
 
@@ -92,22 +100,49 @@ public class ShipController : MonoBehaviour
     {
         isDodging = true;
         dodgeCooldownTimer = dodgeCooldown;
+        shield.SetActive(true);
 
         yield return new WaitForSeconds(dodgeDuration);
         shipCollider.enabled = true;
         isDodging = false;
+        shield.SetActive(false);
     }
 
     void UpdateDodgeUI()
     {
+        if (isAnimatingDodge) return;
+
         if (dodgeCooldownTimer > 0f)
         {
             imgDodge.color = dodgeUnavailableColor;
             imgDodge.fillAmount = 1 - (dodgeCooldownTimer / dodgeCooldown);
+            imgDodge.transform.DOKill();
+            imgDodge.transform.localScale = Vector3.one;
         }
         else
-        {imgDodge.color = dodgeAvailableColor;
+        {
+            imgDodge.color = dodgeAvailableColor;
             imgDodge.fillAmount = 1;
+
+            if (!DOTween.IsTweening(imgDodge.transform))
+            {
+                imgDodge.transform.DOScale(1.05f, dodgeDuration).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+            }
         }
+    }
+
+    void AnimateDodgeIconOnActivated()
+    {
+        isAnimatingDodge = true;
+
+        imgDodge.transform.DOKill();
+        imgDodge.transform.DOScale(1.3f, dodgeDuration).SetEase(Ease.OutBack).OnComplete(() =>
+        {
+            imgDodge.transform.DOScale(1f, 0.2f).SetEase(Ease.InBack).OnComplete(() =>
+            {
+                isAnimatingDodge = false;
+                imgDodge.transform.DOScale(1.05f, dodgeDuration).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+            });
+        });
     }
 }
