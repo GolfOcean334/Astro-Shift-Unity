@@ -15,7 +15,7 @@ public class CurrentScoreDisplay : MonoBehaviour
     {
         if (currentScoreText != null && ScoreManager.Instance != null)
         {
-            currentScoreText.text = "Score: " + Mathf.FloorToInt(ScoreManager.Instance.CurrentScore).ToString();
+            currentScoreText.text = Mathf.FloorToInt(ScoreManager.Instance.CurrentScore).ToString();
         }
     }
 }

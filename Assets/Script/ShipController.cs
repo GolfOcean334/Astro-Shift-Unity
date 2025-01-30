@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening; // Importation de DoTween
+using DG.Tweening;
 
 public class ShipController : MonoBehaviour
 {
