@@ -100,6 +100,7 @@ public float CurrentScore { get; private set; }
 
     void AnimationScoreText()
     {
+        if (PointNeededForScoreTextAnim == 0) return;
         int roundedScore = Mathf.FloorToInt(CurrentScore);
         if (roundedScore % PointNeededForScoreTextAnim == 0 && roundedScore != 0 && roundedScore != 1)
         {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -33,21 +34,19 @@ public class PlayerCollision : MonoBehaviour
         currentLives--;
 
         UpdateHealthBar();
-
-        if (currentLives <= 0)
-        {
-            GameOver();
-        }
-        else
-        {
-            StartCoroutine(InvulnerabilityRoutine());
-        }
+        StartCoroutine(InvulnerabilityRoutine());
     }
 
     void UpdateHealthBar()
     {
         float healthFraction = (float)currentLives / maxLives;
-        healthBar.fillAmount = healthFraction;
+        healthBar.DOFillAmount(healthFraction, 0.3f).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            if (currentLives <= 0)
+            {
+                GameOver();
+            }
+        });
     }
 
     void GameOver()
