@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
+        videoPlayer.prepareCompleted += OnVideoPrepared;
         nextButton.onClick.AddListener(NextTutorial);
         ShowTutorial();
     }
@@ -35,6 +36,29 @@ public class TutorialManager : MonoBehaviour
         {
             CloseTutorial();
         }
+    }
+
+    private void OnVideoPrepared(VideoPlayer vp)
+    {
+        videoDisplay.texture = vp.targetTexture;
+
+        float videoWidth = vp.width;
+        float videoHeight = vp.height;
+        float videoRatio = videoWidth / videoHeight;
+
+        RectTransform rt = videoDisplay.GetComponent<RectTransform>();
+        float screenRatio = (float)Screen.width / (float)Screen.height;
+
+        if (videoRatio > screenRatio)
+        {
+            rt.sizeDelta = new Vector2(Screen.width, Screen.width / videoRatio);
+        }
+        else
+        {
+            rt.sizeDelta = new Vector2(Screen.height * videoRatio, Screen.height);
+        }
+
+        videoPlayer.Play();
     }
 
     private void NextTutorial()
