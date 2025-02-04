@@ -12,8 +12,16 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private VideoClip[] tutorialVideos;
     private int currentVideoIndex = 0;
 
+    private AsteroidSpawner asteroidSpawner;
+
     void Start()
     {
+        asteroidSpawner = FindObjectOfType<AsteroidSpawner>();
+        if (asteroidSpawner != null)
+        {
+            asteroidSpawner.enabled = false;
+        }
+
         videoPlayer.prepareCompleted += OnVideoPrepared;
         nextButton.onClick.AddListener(NextTutorial);
         ShowTutorial();
@@ -77,5 +85,11 @@ public class TutorialManager : MonoBehaviour
     private void CloseTutorial()
     {
         tutorialPanel.SetActive(false);
+
+        if (asteroidSpawner != null)
+        {
+            asteroidSpawner.enabled = true;
+        }
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
