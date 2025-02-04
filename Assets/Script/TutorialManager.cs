@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -13,6 +14,8 @@ public class TutorialManager : MonoBehaviour
     private int currentVideoIndex = 0;
 
     private AsteroidSpawner asteroidSpawner;
+    private ScoreManager scoreManager;
+    private ShipController shipController;
 
     void Start()
     {
@@ -20,6 +23,16 @@ public class TutorialManager : MonoBehaviour
         if (asteroidSpawner != null)
         {
             asteroidSpawner.enabled = false;
+        }
+        scoreManager = FindObjectOfType<ScoreManager>();
+        if (scoreManager != null)
+        {
+            scoreManager.enabled = false;
+        }
+        shipController = FindObjectOfType<ShipController>();
+        if (shipController != null)
+        {
+            shipController.enabled = false;
         }
 
         videoPlayer.prepareCompleted += OnVideoPrepared;
@@ -89,6 +102,14 @@ public class TutorialManager : MonoBehaviour
         if (asteroidSpawner != null)
         {
             asteroidSpawner.enabled = true;
+        }
+        if (scoreManager != null)
+        {
+            scoreManager.enabled = true;
+        }
+        if (shipController != null)
+        {
+            shipController.enabled = true;
         }
         Cursor.lockState = CursorLockMode.Locked;
     }
