@@ -39,6 +39,16 @@ public class TutorialManager : MonoBehaviour
         videoPlayer.loopPointReached += OnVideoEnded;
         nextButton.onClick.AddListener(NextTutorial);
         ShowTutorial();
+
+        if (!MenuManager.hasShownTutorial)
+        {
+            ShowTutorial();
+            MenuManager.hasShownTutorial = true;
+        }
+        else
+        {
+            CloseTutorial();
+        }
     }
 
     private void ShowTutorial()

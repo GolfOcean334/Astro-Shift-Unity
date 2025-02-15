@@ -548,7 +548,7 @@ MonoBehaviour:
   nextButton: {fileID: 2011900904}
   tutorialVideos:
   - {fileID: 32900000, guid: 8dcd4f27b4544a44f80846e4d042446f, type: 3}
-  - {fileID: 32900000, guid: 5ce0cd6830005994499a3b636f839ae5, type: 3}
+  - {fileID: 32900000, guid: 1886af34f54aef142827afacce815e5e, type: 3}
 --- !u!328 &171740800
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -3106,7 +3106,7 @@ PrefabInstance:
     - target: {fileID: 5311019945066600194, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
         type: 3}
       propertyPath: invulnerabilityDuration
-      value: 0.7
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

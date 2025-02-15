@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
-{    
+{
+    public static bool hasShownTutorial = false;
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
