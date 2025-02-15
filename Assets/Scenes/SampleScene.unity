@@ -547,7 +547,7 @@ MonoBehaviour:
   videoDisplay: {fileID: 1318583776}
   nextButton: {fileID: 2011900904}
   tutorialVideos:
-  - {fileID: 32900000, guid: 5ce0cd6830005994499a3b636f839ae5, type: 3}
+  - {fileID: 32900000, guid: 8dcd4f27b4544a44f80846e4d042446f, type: 3}
   - {fileID: 32900000, guid: 5ce0cd6830005994499a3b636f839ae5, type: 3}
 --- !u!328 &171740800
 VideoPlayer:

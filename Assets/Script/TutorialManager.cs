@@ -36,6 +36,7 @@ public class TutorialManager : MonoBehaviour
         }
 
         videoPlayer.prepareCompleted += OnVideoPrepared;
+        videoPlayer.loopPointReached += OnVideoEnded;
         nextButton.onClick.AddListener(NextTutorial);
         ShowTutorial();
     }
@@ -80,6 +81,12 @@ public class TutorialManager : MonoBehaviour
         }
 
         videoPlayer.Play();
+    }
+
+    private void OnVideoEnded(VideoPlayer vp)
+    {
+        vp.time = 0;
+        vp.Play();
     }
 
     private void NextTutorial()
