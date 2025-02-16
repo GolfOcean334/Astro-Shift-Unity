@@ -27,6 +27,9 @@ public class ShipController : MonoBehaviour
 
     [SerializeField] private GameObject shield;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] moveSounds;
+
     void Awake()
     {
         controls = new PlayerControls();
@@ -69,12 +72,14 @@ public class ShipController : MonoBehaviour
             animator.SetTrigger("MoveLeft");
             currentLane--;
             UpdatePosition();
+            PlayRandomMoveSound();
         }
         else if (direction.x > 0 && currentLane < 4) // Droite
         {
             animator.SetTrigger("MoveRight");
             currentLane++;
             UpdatePosition();
+            PlayRandomMoveSound();
         }
     }
 
@@ -144,5 +149,16 @@ public class ShipController : MonoBehaviour
                 imgDodge.transform.DOScale(1.05f, dodgeDuration).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
             });
         });
+    }
+
+    void PlayRandomMoveSound() 
+    {
+        if (moveSounds.Length > 0)
+        {
+            int randomIndex = Random.Range(0, moveSounds.Length);
+            audioSource.Stop();
+            audioSource.PlayOneShot(moveSounds[randomIndex]);
+            audioSource.Play();
+        }
     }
 }
