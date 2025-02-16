@@ -13,6 +13,9 @@ public class PlayerCollision : MonoBehaviour
     bool isInvulnerable = false;
     [SerializeField] private float invulnerabilityDuration = 0.1f;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] hitSounds;
+
     void Start()
     {
         currentLives = maxLives;
@@ -25,6 +28,7 @@ public class PlayerCollision : MonoBehaviour
         {
             Debug.Log("Collision");
             LoseLife();
+            PlayRandomMoveSound();
             Destroy(other.gameObject);
         }
     }
@@ -70,5 +74,16 @@ public class PlayerCollision : MonoBehaviour
         isInvulnerable = true;
         yield return new WaitForSeconds(invulnerabilityDuration);
         isInvulnerable = false;
+    }
+
+    void PlayRandomMoveSound()
+    {
+        if (hitSounds.Length > 0)
+        {
+            int randomIndex = Random.Range(0, hitSounds.Length);
+            audioSource.Stop();
+            audioSource.PlayOneShot(hitSounds[randomIndex]);
+            audioSource.Play();
+        }
     }
 }

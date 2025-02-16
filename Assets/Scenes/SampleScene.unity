@@ -3263,6 +3263,31 @@ PrefabInstance:
       objectReference: {fileID: 927549484}
     - target: {fileID: 5311019945066600194, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
         type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1854758313}
+    - target: {fileID: 5311019945066600194, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
+        type: 3}
+      propertyPath: hitSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311019945066600194, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
+        type: 3}
+      propertyPath: hitSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e2df5fce8df8cfb4785cd4575b122c2e, type: 3}
+    - target: {fileID: 5311019945066600194, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
+        type: 3}
+      propertyPath: hitSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 97d0406b119251e48ad632d4bd7ef283, type: 3}
+    - target: {fileID: 5311019945066600194, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
+        type: 3}
+      propertyPath: hitSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f39559c0ff9fdc4f806af4da59b09a3, type: 3}
+    - target: {fileID: 5311019945066600194, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
+        type: 3}
       propertyPath: invulnerabilityDuration
       value: 0.2
       objectReference: {fileID: 0}
