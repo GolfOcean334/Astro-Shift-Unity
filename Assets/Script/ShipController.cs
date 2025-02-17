@@ -29,6 +29,7 @@ public class ShipController : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] moveSounds;
+    [SerializeField] private AudioClip[] shieldActivationSounds;
 
     void Awake()
     {
@@ -90,6 +91,7 @@ public class ShipController : MonoBehaviour
             shipCollider.enabled = false;
             StartCoroutine(DodgeRoutine());
 
+            PlayRandomShieldActivationSound();
             AnimateDodgeIconOnActivated();
         }
     }
@@ -158,6 +160,16 @@ public class ShipController : MonoBehaviour
             int randomIndex = Random.Range(0, moveSounds.Length);
             audioSource.Stop();
             audioSource.PlayOneShot(moveSounds[randomIndex]);
+            audioSource.Play();
+        }
+    }
+    void PlayRandomShieldActivationSound()
+    {
+        if (shieldActivationSounds.Length > 0)
+        {
+            int randomIndex = Random.Range(0, shieldActivationSounds.Length);
+            audioSource.Stop();
+            audioSource.PlayOneShot(shieldActivationSounds[randomIndex]);
             audioSource.Play();
         }
     }

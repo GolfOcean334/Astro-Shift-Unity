@@ -3084,6 +3084,11 @@ PrefabInstance:
       objectReference: {fileID: 705459145}
     - target: {fileID: -574264653081263064, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
         type: 3}
+      propertyPath: dodgeCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -574264653081263064, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
+        type: 3}
       propertyPath: playerSpaceShip
       value: 
       objectReference: {fileID: 1376892527}
@@ -3174,9 +3179,29 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d23b7c036db9c184c9975de4df84621a, type: 2}
     - target: {fileID: -574264653081263064, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
         type: 3}
+      propertyPath: shieldActivationSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -574264653081263064, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
+        type: 3}
       propertyPath: playerSpaceShipMaterials.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: -574264653081263064, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
+        type: 3}
+      propertyPath: shieldActivationSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f8a529bab76d3f746b4d5c273f42ca93, type: 3}
+    - target: {fileID: -574264653081263064, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
+        type: 3}
+      propertyPath: shieldActivationSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 46c47ad2df2255d48bfc3fac7302f412, type: 3}
+    - target: {fileID: -574264653081263064, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
+        type: 3}
+      propertyPath: shieldActivationSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: d2d497295a6b92a40871991b406674ff, type: 3}
     - target: {fileID: -574264653081263064, guid: 3726f1d0babf2c94d92de9ff9408dc9e,
         type: 3}
       propertyPath: playerSpaceShipMaterials.Array.data[0]
