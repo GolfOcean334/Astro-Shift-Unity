@@ -69,6 +69,8 @@ public class ShipController : MonoBehaviour
 
     void Move(Vector2 direction)
     {
+        if (PlayerCollision.isGameOver) return; // Ajoutez cette ligne
+
         if (direction.x < 0 && currentLane > 0) // Gauche
         {
             animator.SetTrigger("MoveLeft");
@@ -87,6 +89,8 @@ public class ShipController : MonoBehaviour
 
     void Dodge()
     {
+        if (PlayerCollision.isGameOver) return; // Ajoutez cette ligne
+
         if (!isDodging && dodgeCooldownTimer <= 0f)
         {
             shipCollider.enabled = false;

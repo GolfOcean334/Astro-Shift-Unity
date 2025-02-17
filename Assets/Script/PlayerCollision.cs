@@ -9,6 +9,7 @@ public class PlayerCollision : MonoBehaviour
     private int currentLives;
 
     [SerializeField] private Image healthBar;
+    [SerializeField] private Image fadeImage;
 
     bool isInvulnerable = false;
     [SerializeField] private float invulnerabilityDuration = 0.1f;
@@ -18,10 +19,12 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private AudioSource loseSource;
     [SerializeField] private AudioClip[] loseSounds;
 
+    public static bool isGameOver = false;
     void Start()
     {
         currentLives = maxLives;
         UpdateHealthBar();
+        isGameOver = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -39,6 +42,11 @@ public class PlayerCollision : MonoBehaviour
     {
         currentLives--;
 
+        if (currentLives <= 0)
+        {
+            GameOver();
+        }
+
         UpdateHealthBar();
         StartCoroutine(InvulnerabilityRoutine());
     }
@@ -46,13 +54,7 @@ public class PlayerCollision : MonoBehaviour
     void UpdateHealthBar()
     {
         float healthFraction = (float)currentLives / maxLives;
-        healthBar.DOFillAmount(healthFraction, 0.3f).SetEase(Ease.OutQuad).OnComplete(() =>
-        {
-            if (currentLives <= 0)
-            {
-                GameOver();
-            }
-        });
+        healthBar.DOFillAmount(healthFraction, 0.3f).SetEase(Ease.OutQuad);
     }
 
     void GameOver()
@@ -61,18 +63,24 @@ public class PlayerCollision : MonoBehaviour
         {
             ScoreManager.Instance.EndGame();
         }
-        StartCoroutine(PlayLoseSoundAndGoToMenu());
+        isGameOver = true;
+
+        StartCoroutine(PlayLoseSoundAndFadeToBlack());
     }
 
-    System.Collections.IEnumerator PlayLoseSoundAndGoToMenu()
+    System.Collections.IEnumerator PlayLoseSoundAndFadeToBlack()
     {
         float clipLength = PlayRandomLoseSound();
         StartCoroutine(SlowTimeScale(clipLength));
+
+        fadeImage.gameObject.SetActive(true);
+        fadeImage.color = new Color(0, 0, 0, 0);
+        fadeImage.DOFade(1, clipLength).SetEase(Ease.InQuad).SetUpdate(true);
+
         yield return new WaitForSecondsRealtime(clipLength);
-        Debug.Log("Game Over!");
         GoMenu();
-        Cursor.lockState = CursorLockMode.None;
     }
+
 
     System.Collections.IEnumerator SlowTimeScale(float duration)
     {
@@ -88,6 +96,7 @@ public class PlayerCollision : MonoBehaviour
     public void GoMenu()
     {
         SceneManager.LoadScene(0);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     System.Collections.IEnumerator InvulnerabilityRoutine()
