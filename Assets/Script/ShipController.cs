@@ -27,8 +27,9 @@ public class ShipController : MonoBehaviour
 
     [SerializeField] private GameObject shield;
 
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource moveSource;
     [SerializeField] private AudioClip[] moveSounds;
+    [SerializeField] private AudioSource shieldSource;
     [SerializeField] private AudioClip[] shieldActivationSounds;
 
     void Awake()
@@ -158,9 +159,9 @@ public class ShipController : MonoBehaviour
         if (moveSounds.Length > 0)
         {
             int randomIndex = Random.Range(0, moveSounds.Length);
-            audioSource.Stop();
-            audioSource.PlayOneShot(moveSounds[randomIndex]);
-            audioSource.Play();
+            moveSource.Stop();
+            moveSource.PlayOneShot(moveSounds[randomIndex]);
+            moveSource.Play();
         }
     }
     void PlayRandomShieldActivationSound()
@@ -168,9 +169,7 @@ public class ShipController : MonoBehaviour
         if (shieldActivationSounds.Length > 0)
         {
             int randomIndex = Random.Range(0, shieldActivationSounds.Length);
-            audioSource.Stop();
-            audioSource.PlayOneShot(shieldActivationSounds[randomIndex]);
-            audioSource.Play();
+            shieldSource.PlayOneShot(shieldActivationSounds[randomIndex]);
         }
     }
 }
