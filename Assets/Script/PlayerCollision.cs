@@ -13,8 +13,10 @@ public class PlayerCollision : MonoBehaviour
     bool isInvulnerable = false;
     [SerializeField] private float invulnerabilityDuration = 0.1f;
 
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource hitSource;
     [SerializeField] private AudioClip[] hitSounds;
+    [SerializeField] private AudioSource loseSource;
+    [SerializeField] private AudioClip[] loseSounds;
 
     void Start()
     {
@@ -59,16 +61,35 @@ public class PlayerCollision : MonoBehaviour
         {
             ScoreManager.Instance.EndGame();
         }
+        StartCoroutine(PlayLoseSoundAndGoToMenu());
+    }
+
+    System.Collections.IEnumerator PlayLoseSoundAndGoToMenu()
+    {
+        float clipLength = PlayRandomLoseSound();
+        StartCoroutine(SlowTimeScale(clipLength));
+        yield return new WaitForSecondsRealtime(clipLength);
         Debug.Log("Game Over!");
-        Time.timeScale = 0;
         GoMenu();
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    System.Collections.IEnumerator SlowTimeScale(float duration)
+    {
+        float startTime = Time.unscaledTime;
+        while (Time.unscaledTime < startTime + duration)
+        {
+            Time.timeScale = Mathf.Lerp(1, 0, (Time.unscaledTime - startTime) / duration);
+            yield return null;
+        }
+        Time.timeScale = 0;
     }
 
     public void GoMenu()
     {
         SceneManager.LoadScene(0);
     }
+
     System.Collections.IEnumerator InvulnerabilityRoutine()
     {
         isInvulnerable = true;
@@ -81,9 +102,19 @@ public class PlayerCollision : MonoBehaviour
         if (hitSounds.Length > 0)
         {
             int randomIndex = Random.Range(0, hitSounds.Length);
-            audioSource.Stop();
-            audioSource.PlayOneShot(hitSounds[randomIndex]);
-            audioSource.Play();
+            hitSource.PlayOneShot(hitSounds[randomIndex]);
         }
+    }
+
+    float PlayRandomLoseSound()
+    {
+        if (loseSounds.Length > 0)
+        {
+            int randomIndex = Random.Range(0, loseSounds.Length);
+            AudioClip clipToPlay = loseSounds[randomIndex];
+            loseSource.PlayOneShot(clipToPlay);
+            return clipToPlay.length;
+        }
+        return 0f;
     }
 }
