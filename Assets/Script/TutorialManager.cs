@@ -17,6 +17,9 @@ public class TutorialManager : MonoBehaviour
     private ScoreManager scoreManager;
     private ShipController shipController;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] nextButtonAudioClip;
+
     void Start()
     {
         asteroidSpawner = FindObjectOfType<AsteroidSpawner>();
@@ -38,7 +41,6 @@ public class TutorialManager : MonoBehaviour
         videoPlayer.prepareCompleted += OnVideoPrepared;
         videoPlayer.loopPointReached += OnVideoEnded;
         nextButton.onClick.AddListener(NextTutorial);
-        ShowTutorial();
 
         if (!MenuManager.hasShownTutorial)
         {
@@ -101,6 +103,8 @@ public class TutorialManager : MonoBehaviour
 
     private void NextTutorial()
     {
+        PlayRandomSound();
+
         currentVideoIndex++;
         if (currentVideoIndex < tutorialVideos.Length)
         {
@@ -109,6 +113,15 @@ public class TutorialManager : MonoBehaviour
         else
         {
             CloseTutorial();
+        }
+    }
+
+    private void PlayRandomSound()
+    {
+        if (nextButtonAudioClip.Length > 0)
+        {
+            int randomIndex = Random.Range(0, nextButtonAudioClip.Length);
+            audioSource.PlayOneShot(nextButtonAudioClip[randomIndex]);
         }
     }
 
