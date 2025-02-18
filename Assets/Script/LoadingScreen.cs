@@ -16,7 +16,7 @@ public class LoadingScreen : MonoBehaviour
 
     IEnumerator LoadGameScene()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         AsyncOperation operation = SceneManager.LoadSceneAsync("SampleScene");
         operation.allowSceneActivation = false;
