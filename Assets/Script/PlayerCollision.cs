@@ -42,7 +42,7 @@ public class PlayerCollision : MonoBehaviour
     {
         currentLives--;
 
-        if (currentLives <= 0)
+        if (currentLives == 0)
         {
             GameOver();
         }
