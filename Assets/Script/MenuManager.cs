@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private AudioClip[] playAudioClip;
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("LoadingScreen");
         Time.timeScale = 1.0f;
     }
 
