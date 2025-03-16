@@ -34,7 +34,7 @@ Controls
 License
 -------
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/copilot/c/LICENSE) file for more details.
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. See the [LICENSE](https://github.com/GolfOcean334/Astro-Shift-Unity/blob/main/LICENSE) file for more details.
 
 #### Français
 
@@ -72,4 +72,4 @@ Contrôles
 Licence
 -------
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](https://github.com/copilot/c/LICENSE) pour plus de détails.
+Ce projet est sous la Creative Commons Attribution-NonCommercial 4.0 International License. Voir le fichier [LICENSE](https://github.com/GolfOcean334/Astro-Shift-Unity/blob/main/LICENSE) pour plus de détails.
