@@ -18,7 +18,7 @@ Features
 Installation
 ------------
 
-[Download the game on itch.io]([https://votre-lien-itch-io](https://golfocean33.itch.io/astroshift))
+[Download the game on itch.io](https://golfocean33.itch.io/astroshift)
 
 
 Controls
@@ -54,7 +54,7 @@ Fonctionnalités
 Installation
 ------------
 
-[Télécharger le jeu depuis itch.io]([https://votre-lien-itch-io](https://golfocean33.itch.io/astroshift))
+[Télécharger le jeu depuis itch.io](https://golfocean33.itch.io/astroshift)
 
     
 
