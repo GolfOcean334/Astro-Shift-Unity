@@ -18,10 +18,8 @@ Features
 Installation
 ------------
 
-1.  git clone https://github.com/GolfOcean334/Astro-Shift-Unity.git
-    
-2.  Open the project in Unity.
-    
+[Download the game on itch.io]([https://votre-lien-itch-io](https://golfocean33.itch.io/astroshift))
+
 
 Controls
 --------
@@ -56,9 +54,8 @@ Fonctionnalités
 Installation
 ------------
 
-1.  git clone https://github.com/GolfOcean334/Astro-Shift-Unity.git
-    
-2.  Ouvrez le projet dans Unity.
+[Télécharger le jeu depuis itch.io]([https://votre-lien-itch-io](https://golfocean33.itch.io/astroshift))
+
     
 
 Contrôles
