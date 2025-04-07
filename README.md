@@ -1,3 +1,34 @@
+<!-- Bannière décorative -->
+![Space Blaster Banner](https://img.shields.io/badge/---%20SPACE%20BLASTER%20---!-purple?style=for-the-badge&logo=rocket&logoColor=white)
+
+![Licence](https://img.shields.io/badge/licence-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
+
+---
+
+# Space Blaster
+
+**Space Blaster** est un jeu d'arcade rapide et addictif dans lequel vous contrôlez un vaisseau spatial devant esquiver un champ d'astéroïdes en approche constante.  
+Le but est simple : survivre le plus longtemps possible et battre votre record de score !
+
+## Table des Matières
+
+- [Installation](#installation)
+- [Contrôles](#contrôles)
+- [Fonctionnalités](#fonctionnalités)
+- [Aperçu](#aperçu)
+- [Contribution](#contribution)
+- [Licence](#licence)
+- [Auteur](#auteur)
+- [Remerciements](#remerciements)
+
+## Installation
+
+1. Clonez le dépôt :
+   ```bash
+   git clone https://github.com/votre-utilisateur/space-blaster.git
+
+
 #### English
 
 Astro Shift Unity
