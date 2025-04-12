@@ -1,9 +1,9 @@
 #### English
 
-Astro Shift Unity
+Astro Shift
 =================
 
-Astro Shift Unity is a game where you control a spaceship that can move laterally across different lanes to avoid incoming meteors.
+Astro Shift is a game where you control a spaceship that can move laterally across different lanes to avoid incoming meteors.
 
 Features
 --------
@@ -36,10 +36,10 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
 
 #### Français
 
-Astro Shift Unity
+Astro Shift
 =================
 
-Astro Shift Unity est un jeu où vous contrôlez un vaisseau spatial qui peut se déplacer latéralement sur différentes lignes pour éviter les météores entrants.
+Astro Shift est un jeu où vous contrôlez un vaisseau spatial qui peut se déplacer latéralement sur différentes lignes pour éviter les météores entrants.
 
 Fonctionnalités
 ---------------
