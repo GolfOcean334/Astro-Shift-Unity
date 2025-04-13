@@ -1,6 +1,6 @@
 #### English
 
-Astro Shift
+AstroShift
 =================
 
 Astro Shift is a game where you control a spaceship that can move laterally across different lanes to avoid incoming meteors.
@@ -36,7 +36,7 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
 
 #### Français
 
-Astro Shift
+AstroShift
 =================
 
 Astro Shift est un jeu où vous contrôlez un vaisseau spatial qui peut se déplacer latéralement sur différentes lignes pour éviter les météores entrants.
